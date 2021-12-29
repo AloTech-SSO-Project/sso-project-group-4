@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# AloTech FullStack Bootcamp SSO Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Single sign-on (SSO) is a session and user authentication service that permits a user to use one set of login credentials to access multiple applications. A token is generated, which can be stored in cookies or in the url. And this token is used for cross-service security.SSO can be used by enterprises, smaller organizations and individuals to ease the management of various usernames and passwords.
 
-## Available Scripts
 
-In the project directory, you can run:
+<p align="center">
+    <img src="./schema.png"/>
+</p>
 
-### `npm start`
+---
+## SSO Auth
+    isAuthorized method, verify to username and password for login. If information is correct,response (true,user_id,token) or (false)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    isAccessTokenValid method, Control the acees token valid. Is token valid response same token. İf user token is expired, new token will be generated and response will be new token. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## User Manager 
+    Page is first loaded, check access token is valid or not. If there is not access token redirect sso-auth login page. If have a access token  check validation with sso-auth isAccessTokenValid method. If authenticated user_type is admin,then show this page.
+    Get user list
+    Create new user
+    Update user
+    Delete user
 
-### `npm test`
+## Consumer 
+    Page is first loaded, check access token is valid or not. If there is not access token redirect sso-auth login page. If have a access token  check validation with sso-auth isAccesTokenValid method. If authenticated user_type is admin,then show this page.
+    Call getUserInfo method from user manager to get user information.
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech & Libraries
+* [ReactJS](https://reactjs.org/)
+* [Bootstrap](https://getbootstrap.com/)
+* [Reactstrap](https://reactstrap.github.io/)
+* [Formik](https://formik.org/)
+* [NodeJS](https://nodejs.org/)
+* [ExpressJS](https://expressjs.com/)
+* [Mocha](https://mochajs.org/)
+* [MySQL](https://www.mysql.com/)
+* [JSON Web Token](https://github.com/auth0/node-jsonwebtoken)
+* [Winston](https://github.com/winstonjs/winston)
+---
 
-### `npm run build`
+## Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### First of all import users.sql file to your sql database for table and stored procedures.
++ sso-auth/server/config.js file is the configuration file your database. You can change the database name,user,password,host,port.
+  
++ user-manager/server/config.js file is the configuration file your database. You can change the database name,user,password,host,port.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+First clone this repository.
+```bash
+$ git clone https://github.com/AloTech-SSO-Project/user-manager.git
+$ cd user-manager
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+sso-auth
+```bash
+$ cd sso-auth
 
-### `npm run eject`
+$ cd server
+$ npm install
+$ npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+$ cd client
+$ npm install
+$ npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+user-manager
+```bash
+$ cd user-manager
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+$ cd server
+$ npm install
+$ npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+$ cd client
+$ npm install
+$ npm start
+```
 
-## Learn More
+consumer
+```bash
+$ cd consumer
+$ npm install
+$ npm start
+```
+---
+## For try the application you can use this information :  
++ For admin login : 
+    username : admin - 
+    password : Qweasd12.
++ For user login : 
+    username : user1 - 
+    password : Qweasd12.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributors
 
-### Code Splitting
+- [Çağatay Çürük](https://github.com/cagatay135)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [Yılmaz Canpolat](https://github.com/ylmzcanpolat)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Berkan Ankal](https://github.com/berkanankal)
