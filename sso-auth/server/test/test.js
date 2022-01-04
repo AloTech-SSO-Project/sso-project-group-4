@@ -4,9 +4,10 @@ let should = chai.should();
 chai.use(chaiHttp);
 
 const app = "http://localhost:3010";
-
+// Test SSO-auth server methods
 describe("/ SSO-Auth", () => {
   let access_token;
+  // Test if user exist in DB
   it("it should POST login", (done) => {
     let user = {
       username: "test_admin",
@@ -22,6 +23,7 @@ describe("/ SSO-Auth", () => {
         done();
       });
   });
+  // Test, access token valid or expired
   it("it should GET control acces token valid", (done) => {
     let token = {
       access_token: access_token,

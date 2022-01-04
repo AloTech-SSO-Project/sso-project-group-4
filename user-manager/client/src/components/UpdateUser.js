@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 
 const UpdateUser = ({ user, handleClose, updateUser, users }) => {
+  // Create custom validation to formik for unique e-mail
   yup.addMethod(yup.string, "uniqueEmail", function (message) {
     return this.test("uniqueEmail", message, function (value) {
       if (
@@ -15,7 +16,7 @@ const UpdateUser = ({ user, handleClose, updateUser, users }) => {
       return true;
     });
   });
-
+  // Create custom validation to formik for unique username
   yup.addMethod(yup.string, "uniqueUsername", function (message) {
     return this.test("uniqueUsername", message, function (value) {
       if (

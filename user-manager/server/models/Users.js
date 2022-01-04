@@ -1,6 +1,7 @@
 const mysql = require("mysql");
-var {DB_CONFIG} = require("../config.js");
+var { DB_CONFIG } = require("../config.js");
 
+// SQL prosedures
 const crtUser = (
   username,
   user_name,

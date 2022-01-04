@@ -8,6 +8,7 @@ const App = () => {
   const [cookies, setCookie] = useCookies([]);
 
   useEffect(() => {
+    // if user have token, redirect to SSO-consumer
     if (cookies.access_token) {
       window.location.href = `http://localhost:5001`;
     } else {

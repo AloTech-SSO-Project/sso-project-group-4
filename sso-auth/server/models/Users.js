@@ -1,6 +1,7 @@
 let mysql = require("mysql");
-var {DB_CONFIG} = require("../config.js");
+var { DB_CONFIG } = require("../config.js");
 
+// SQL connections
 const getOneUser = (username, salted_hash) => {
   let sql = `SELECT * FROM Users WHERE username="${username}" AND user_password="${salted_hash}"`;
   let connection = mysql.createConnection(DB_CONFIG);

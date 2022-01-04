@@ -1,21 +1,22 @@
 const express = require("express");
-var cookieParser = require("cookie-parser");
-
-const app = express();
-app.use(cookieParser());
-const port = 3010;
-
-var cors = require("cors");
-app.use(cors());
-
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const router = require("./router/index");
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+const app = express();
 
+const port = 3010;
+
+// Middleware
+app.use(cors());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Routes
 app.use("/", router);
-app.use("/", router);
+
+// Server start
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});

@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import Pagination from "./Pagination";
 
 const UserList = ({ users, deleteUser, updateUser, logout }) => {
+  // For pagination actions
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(5);
 

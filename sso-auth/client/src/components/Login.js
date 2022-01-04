@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import "./styles.css";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import "./styles.css";
+
 var SHA256 = require("crypto-js/sha256");
 
 const Login = () => {
@@ -19,11 +20,13 @@ const Login = () => {
       },
       onSubmit: (values) => {
         axios
+          // Hash password with SHA256
           .post("http://localhost:3010/", {
             username: values.username,
             salted_hash: SHA256("alotech" + values.user_password).toString(),
           })
           .then((res) => {
+            // if user matched in DB, set token to cookie and redirect to consumer
             if (res.data.result === true) {
               setCookie("access_token", res.data.Access_Token);
               window.location.href = `http://localhost:5001/`;
@@ -35,6 +38,7 @@ const Login = () => {
             console.log(err);
           });
       },
+      // Validation with formik
       validationSchema: Yup.object({
         username: Yup.string().min(5).max(20).required(),
         user_password: Yup.string()

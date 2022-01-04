@@ -7,9 +7,8 @@ const User = ({ user, deleteUser, updateUser, users }) => {
   const handleDelete = () => {
     deleteUser(userid);
   };
-
+  // For modal actions
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 

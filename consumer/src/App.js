@@ -12,11 +12,12 @@ function App() {
 
   useEffect(() => {
     if (!cookies.access_token) {
-      // if cookie is set, redirect to home
+      // if cookie is not exist, redirect to SSO-auth client (login page)
       window.location.href = `http://localhost:4000/?redirectURL=${window.location.href}`;
     } else {
       let index;
       const fetchData = async () => {
+        // Check if token is valid
         const respGlobal = await axios
           .post("http://localhost:3010/isAccessTokenValid", {
             access_token: cookies.access_token,
@@ -24,13 +25,18 @@ function App() {
           .then((res) => {
             cookieref.current = res.data.access_token;
             setCookie("access_token", res.data.access_token, { path: "/" });
+            // Decode token and get user type
             if (jwt_decode(res.data.access_token).user_type == "Admin") {
+              // if user type is admin, redirect to user-manager's client
               window.location.href = "http://localhost:3001";
             } else {
+              // if user type is user, load page
               SetLoad(true);
             }
+            // Decode token and get user id
             index = jwt_decode(res.data.access_token).id;
           });
+        // Call userInfo method from user-manager server
         const x = await axios
           .get(`http://localhost:3000/user/${index}`, {
             headers: {
@@ -46,6 +52,7 @@ function App() {
     }
   }, []);
 
+  // Logout
   onsubmit = (e) => {
     e.preventDefault();
     setCookie("access_token", "", { path: "/" });

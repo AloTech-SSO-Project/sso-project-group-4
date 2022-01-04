@@ -5,9 +5,10 @@ chai.use(chaiHttp);
 
 const auth_service = "http://localhost:3010";
 const app = "http://localhost:3000";
-
+// Test user-manager server
 describe("/GET List User", () => {
   let access_token;
+  // Test login and get token
   it("it should POST login", (done) => {
     let user = {
       username: "test_admin",
@@ -23,6 +24,7 @@ describe("/GET List User", () => {
         done();
       });
   });
+  // Test check token valid
   it("it should GET control acces token valid", (done) => {
     let token = {
       access_token: access_token,
@@ -36,7 +38,7 @@ describe("/GET List User", () => {
         done();
       });
   });
-
+  // Test createUser method
   it("it should POST a user", (done) => {
     let user = {
       username: "test_username",
@@ -56,6 +58,7 @@ describe("/GET List User", () => {
         done();
       });
   });
+  // Test getListOfUsers method
   it("it should GET all users", (done) => {
     chai
       .request(app)
@@ -67,6 +70,7 @@ describe("/GET List User", () => {
         done();
       });
   });
+  // Test getUserInfo method
   it("it should GET specific user", (done) => {
     chai
       .request(app)
@@ -77,6 +81,7 @@ describe("/GET List User", () => {
         done();
       });
   });
+  // Test updateUser method
   it("it should PUT a user", (done) => {
     let user = {
       username: "test_updated_name",
@@ -96,6 +101,7 @@ describe("/GET List User", () => {
         done();
       });
   });
+  // Test deleteUser method
   it("it should DELETE a user", (done) => {
     chai
       .request(app)

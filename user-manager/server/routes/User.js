@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-
 const getAllUser = require("../controllers/getUser");
 
+// Controllers
 router.route("/listuser").get(getAllUser.getListOfUsers);
 router.route("/user/:id").get(getAllUser.getUserInfo);
 router.route("/createuser").post(getAllUser.createUser);

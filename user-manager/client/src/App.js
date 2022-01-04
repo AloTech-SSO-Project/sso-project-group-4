@@ -18,19 +18,23 @@ const App = () => {
 
   useEffect(async () => {
     if (!cookies.access_token) {
+      // if token is not exist redirect to SSO-auth client (login page)
       window.location.href = `http://localhost:4000/`;
     } else {
       await axios
+        // Check if token is valid
         .post("http://localhost:3010/isAccessTokenValid", {
           access_token: cookies.access_token,
         })
         .then((res) => {
           cookieref.current = res.data.access_token;
           setCookie("access_token", res.data.access_token, { path: "/" });
-
+          // Decode token and get user type
           if (jwt_decode(res.data.access_token).user_type == "User") {
+            // if user type is user, redirect to consumer
             window.location.href = "http://localhost:5001";
           } else {
+            // if user type is admin, load page
             setAdmin(jwt_decode(res.data.access_token).id);
             setLoad(true);
           }
@@ -38,6 +42,7 @@ const App = () => {
     }
 
     await axios
+      // Send get request to user-manager's server for get users list
       .get("http://localhost:3000/listuser", {
         headers: {
           Authorization: cookieref.current,
@@ -57,6 +62,7 @@ const App = () => {
   const addUser = async (values) => {
     setUsers([...users, values]);
     axios
+      // Send post request to user-manager's server for add user to DB
       .post(
         "http://localhost:3000/createuser",
         {
@@ -79,6 +85,7 @@ const App = () => {
       users.map((user) => (user.id === parseInt(values.id) ? values : user))
     );
     axios
+      // Send put request to user-manager's server for update a user
       .put(
         `http://localhost:3000/updateuser/${values.id}`,
         {
@@ -97,6 +104,7 @@ const App = () => {
 
   const deleteUser = (userid) => {
     if (userid != admin) {
+      // Send get request to user-manager's server for delete a user
       axios.get(`http://localhost:3000/deleteuser/${userid}`, {
         headers: {
           Authorization: cookies.access_token,
@@ -108,6 +116,7 @@ const App = () => {
     }
   };
 
+  // Logout
   const logout = () => {
     setCookie("access_token", "", { path: "/" });
     window.location.href = "/";

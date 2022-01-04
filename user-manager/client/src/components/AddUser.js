@@ -5,7 +5,7 @@ import * as yup from "yup";
 
 const AddUser = ({ addUser, users }) => {
   const navigate = useNavigate();
-
+  // Create custom validation to formik for unique e-mail
   yup.addMethod(yup.string, "uniqueEmail", function (message) {
     return this.test("uniqueEmail", message, function (value) {
       if (users.filter((user) => user.user_email === value).length > 0) {
@@ -14,7 +14,7 @@ const AddUser = ({ addUser, users }) => {
       return true;
     });
   });
-
+  // Create custom validation to formik for unique username
   yup.addMethod(yup.string, "uniqueUsername", function (message) {
     return this.test("uniqueUsername", message, function (value) {
       if (users.filter((user) => user.username === value).length > 0) {
