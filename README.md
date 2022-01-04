@@ -9,20 +9,23 @@ Single sign-on (SSO) is a session and user authentication service that permits a
 
 ---
 ## SSO Auth
-    isAuthorized method, verify to username and password for login. If information is correct,response (true,user_id,token) or (false)
-
-    isAccessTokenValid method, Control the acees token valid. Is token valid response same token. İf user token is expired, new token will be generated and response will be new token. 
+    isAuthorized method, verify to username and password for login. If information is correct,response 
+    (true,user_id,token) or (false) isAccessTokenValid method, Control the acees token valid. Is token valid 
+    response same token. İf user token is expired, new token will be generated and response will be new token. 
 
 ## User Manager 
-    Page is first loaded, check access token is valid or not. If there is not access token redirect sso-auth login page. If have a access token  check validation with sso-auth isAccessTokenValid method. If authenticated user_type is admin,then show this page.
-    Get user list
-    Create new user
-    Update user
-    Delete user
+    Page is first loaded, check access token is valid or not. If there is not access token redirect  sso-auth login
+    page. If have a access token  check validation with sso-auth isAccessTokenValid method. If authenticated user_type
+    is admin,then show this page.
+    Features :  Get user list
+                Create new user
+                Update user
+                Delete user
 
 ## Consumer 
-    Page is first loaded, check access token is valid or not. If there is not access token redirect sso-auth login page. If have a access token  check validation with sso-auth isAccesTokenValid method. If authenticated user_type is admin,then show this page.
-    Call getUserInfo method from user manager to get user information.
+    Page is first loaded, check access token is valid or not. If there is not access token redirect sso-auth login 
+    page. If have a access token  check validation with sso-auth isAccesTokenValid method. If authenticated user_type 
+    is admin,then show this page. Call getUserInfo method from user manager to get user information.
 ---
 
 ## Tech & Libraries
