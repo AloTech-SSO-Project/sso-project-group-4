@@ -3,7 +3,7 @@
 const DB_CONFIG = {
   host: 'localhost',
   user: 'root',
-  password: 'Trueak01mac.',
+  password: 'password',
   database: 'Users',
   port: 3306
 };
