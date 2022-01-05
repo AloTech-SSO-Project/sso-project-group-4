@@ -88,8 +88,8 @@ $ npm start
 ```
 ---
 ## API Documentation
-#### [ Sso Auth API Documentation ]()
-#### [ User Manager API Documentation ]()
+#### [ Sso Auth API Documentation ](https://github.com/AloTech-SSO-Project/sso-project-group-4/blob/main/sso-auth/server/README.md)
+#### [ User Manager API Documentation ](https://github.com/AloTech-SSO-Project/sso-project-group-4/tree/main/user-manager/server)
 ---
 ## For try the application you can use this information :  
 + For admin login : 

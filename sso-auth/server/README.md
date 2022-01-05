@@ -1,16 +1,18 @@
 ## API Documentation
 
-Request : 
+Request :
+
 ```http
 POST /
 ```
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `username` | `string` | **Required**
-| `password` | `string` | **Required**
+| Parameter  | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `username` | `string` | **Required** |
+| `password` | `string` | **Required** |
 
 **Successful Response:**
+
 ```json
 {
    "result"  : bool,
@@ -19,16 +21,18 @@ POST /
 }
 ```
 
-Request : 
+Request :
+
 ```http
 POST /isAccessTokenValid
 ```
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `access_token` | `string` | **Required**
+| Parameter      | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `access_token` | `string` | **Required** |
 
 **Successful Response:**
+
 ```json
 {
    "access_token" : string,

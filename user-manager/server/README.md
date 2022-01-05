@@ -1,33 +1,36 @@
 ## API Documentation
 
-Request : 
+Request :
+
 ```http
 GET /listuser
 ```
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `access_token` | `string` | **Required**
+| Parameter      | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `access_token` | `string` | **Required** |
 
 **Successful Response:**
+
 ```json
 {
    "result"  : array,
 }
 ```
 
-Request : 
+Request :
+
 ```http
 GET /user/${id}
 ```
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `access_token` | `string` | **Required**
-| `id` | `parameter` | **Required**
-
+| Parameter      | Type        | Description  |
+| :------------- | :---------- | :----------- |
+| `access_token` | `string`    | **Required** |
+| `id`           | `parameter` | **Required** |
 
 **Successful Response:**
+
 ```json
 {
     "status" : string,
@@ -35,65 +38,67 @@ GET /user/${id}
 }
 ```
 
+Request :
 
-Request : 
 ```http
 POST /createuser
 ```
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `access_token` | `string` | **Required**
-| `username` | `string` | **Required**
-| `user_name` | `string` | **Required**
-| `user_surname` | `string` | **Required**
-| `user_email` | `string` | **Required**
-| `user_password` | `string` | **Required**
-| `user_type` | `string` | **Required**
+| Parameter       | Type     | Description  |
+| :-------------- | :------- | :----------- |
+| `access_token`  | `string` | **Required** |
+| `username`      | `string` | **Required** |
+| `user_name`     | `string` | **Required** |
+| `user_surname`  | `string` | **Required** |
+| `user_email`    | `string` | **Required** |
+| `user_password` | `string` | **Required** |
+| `user_type`     | `string` | **Required** |
 
 **Successful Response:**
+
 ```json
 {
     "status" : string,
 }
 ```
 
+Request :
 
-Request : 
 ```http
 PUT /updateuser/${id}
 ```
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `access_token` | `string` | **Required**
-| `id` | `parameter` | **Required**
-| `username` | `string` | **Required**
-| `user_name` | `string` | **Required**
-| `user_surname` | `string` | **Required**
-| `user_email` | `string` | **Required**
-| `user_type` | `string` | **Required**
-
+| Parameter      | Type        | Description  |
+| :------------- | :---------- | :----------- |
+| `access_token` | `string`    | **Required** |
+| `id`           | `parameter` | **Required** |
+| `username`     | `string`    | **Required** |
+| `user_name`    | `string`    | **Required** |
+| `user_surname` | `string`    | **Required** |
+| `user_email`   | `string`    | **Required** |
+| `user_type`    | `string`    | **Required** |
 
 **Successful Response:**
+
 ```json
 {
    "status"  : string,
 }
 ```
 
-Request : 
+Request :
+
 ```http
 GET /deleteuser/${id}
 ```
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `access_token` | `string` | **Required**
-| `id` | `parameter` | **Required**
-
+| Parameter      | Type        | Description  |
+| :------------- | :---------- | :----------- |
+| `access_token` | `string`    | **Required** |
+| `id`           | `parameter` | **Required** |
 
 **Successful Response:**
+
 ```json
 {
    "status"  : string,
